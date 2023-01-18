@@ -24,11 +24,9 @@ const host = process.env.HOST;
 
         const mongoUser = process.env.MONGO_USER;
         const mongoPassword = process.env.MONGO_PASSWORD;
-        const mongoIP = process.env.MONGO_IP;
-        const mongoPort = process.env.MONGO_PORT;
         
-        if (!mongoUser || !mongoPassword || !mongoIP || !mongoPort || !host || !port) {
-            throw new Error('Mongo env variables are not defined');
+        if (!mongoUser || !mongoPassword || !host || !port) {
+            throw new Error('env variables are not defined');
         }
         await mongoose.connect(
             `mongodb+srv://${mongoUser}:${mongoPassword}@cluster0.gomcefl.mongodb.net/?retryWrites=true&w=majority`,
