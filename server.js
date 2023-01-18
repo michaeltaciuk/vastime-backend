@@ -41,10 +41,6 @@ const host = process.env.HOST;
             console.log(`Server listening at http://${host}:${port}`);
         });
 
-        app.get('/vastime-icon.png', function(req, res) {
-            res.sendFile(path.join(__dirname, '/images/vastime-icon.png', 'vastime-icon.png'));
-        });
-
         mongoose.connection.on('error', (err) => {
             console.log(err);
         });
