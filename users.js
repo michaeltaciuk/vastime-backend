@@ -47,7 +47,7 @@ const deleteUser = async (userEmail) => {
   
   try {
 
-    const userPromise = User.findByIdAndDelete(userEmail);
+    const userPromise = User.findOneAndDelete({email: userEmail});
 
     await Promise.all([userPromise]);
     
