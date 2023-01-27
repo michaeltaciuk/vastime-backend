@@ -24,7 +24,7 @@ const port = process.env.PORT;
         const mongoUser = process.env.MONGO_USER;
         const mongoPassword = process.env.MONGO_PASSWORD;
         
-        if (!mongoUser || !mongoPassword || !host || !port) {
+        if (!mongoUser || !mongoPassword || !port) {
             throw new Error('env variables are not defined');
         }
         await mongoose.connect(
