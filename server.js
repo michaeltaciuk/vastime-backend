@@ -8,7 +8,6 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT;
-const host = process.env.HOST;
 
 (async () => {
     try {
@@ -37,8 +36,8 @@ const host = process.env.HOST;
         );
         console.log('Connected to MongoDB');
 
-        app.listen(port, host, () => {
-            console.log(`Server listening at http://${host}:${port}`);
+        app.listen(port, () => {
+            console.log(`Server listening on port: ${port}`);
         });
 
         mongoose.connection.on('error', (err) => {
