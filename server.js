@@ -9,19 +9,18 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://vastime.io");
+    next();
+}); 
+
 (async () => {
     try {
         app.use(cors());
         app.options('*', cors());
         app.use(cookieParser());
 
-        const router = require('./routes');
-
-        app.use(function(req, res, next) {
-            res.header("Access-Control-Allow-Origin", "https://vastime.io");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            next();
-        });          
+        const router = require('./routes');         
 
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: true }));
