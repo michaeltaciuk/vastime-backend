@@ -1,7 +1,7 @@
 const { User } = require("./schemas");
 const mongoose = require("mongoose");
 
-const options = { upsert: true, new: true };
+const options = { upsert: true, new: true, overwrite: true };
 
 const getUser = async (userEmail) => {
     console.log(`users - getUser ${userEmail}`);
