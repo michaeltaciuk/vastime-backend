@@ -20,7 +20,7 @@ router.post("/user/new", async (req, res) => {
     res.send(result);
 });
 
-router.put("/user/:userEmail", async (req, res) => {
+router.put("/userup/:userEmail", async (req, res) => {
     console.log("----------- router.put");
     const { body } = req;
     const result = await users.updateUser(body);
