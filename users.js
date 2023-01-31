@@ -37,7 +37,10 @@ const createUser = async ({ name, userEmail}) => {
 
 const updateUser = async (user) => {
   try {
-    return await User.findOneAndUpdate({ email: user.email }, user, options);
+    return await User.findOneAndUpdate(
+      { email: user.email }, 
+      { $push: { history: user.history }}, 
+      options);
   } catch (e) {
     logError(e);
   }
