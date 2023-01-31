@@ -12,7 +12,7 @@ const getUser = async (userEmail) => {
         console.log(foo);
         return foo;
     } catch (e) {
-        logError(e);
+      console.log(e);
     }
 };
 
@@ -31,7 +31,7 @@ const createUser = async ({ name, userEmail}) => {
       options
     );
   } catch (e) {
-    logError(e);
+    console.log(e);
   }
 };
 
@@ -43,7 +43,7 @@ const updateUser = async (user) => {
       { $push: { history: user.history }}, 
       options);
   } catch (e) {
-    logError(e);
+    console.log(e);
   }
 };
 
