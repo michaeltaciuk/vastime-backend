@@ -37,6 +37,7 @@ const createUser = async ({ name, userEmail}) => {
 
 const updateUser = async (user) => {
   try {
+    console.log(user.email);
     return await User.findOneAndUpdate(
       { email: user.email }, 
       { $push: { history: user.history }}, 

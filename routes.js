@@ -21,10 +21,9 @@ router.post("/user/new", async (req, res) => {
 });
 
 router.post("/user/:userEmail", async (req, res) => {
-    console.log("----------- router.put");
+    console.log("----------- routes.post-updateUser");
     const { body } = req;
     const result = await users.updateUser(body);
-    res.header("Access-Control-Allow-Origin", "https://vastime.io");
     res.send(result);
 });
 
