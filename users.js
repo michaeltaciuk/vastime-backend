@@ -37,7 +37,7 @@ const createUser = async ({ name, userEmail}) => {
 
 const updateUser = async (user) => {
   try {
-    console.log(user.email);
+    console.log(user.history[0].timeChunks);
     let date = user.history[0].date;
     return await User.findOneAndUpdate(
       { email: user.email, "history.date": date }, 
