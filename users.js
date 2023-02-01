@@ -1,7 +1,7 @@
 const { User } = require("./schemas");
 const mongoose = require("mongoose");
 
-const options = { upsert: true, new: true, overwrite: true };
+const options = { upsert: true, new: true};
 
 const getUser = async (userEmail) => {
     console.log(`users - getUser ${userEmail}`);
@@ -35,15 +35,13 @@ const createUser = async ({ name, userEmail}) => {
   }
 };
 
-const updateUser = async (user) => {
+const updateUser = async (data) => {
   try {
-    console.log(user.history[0].date);
-    console.log(user.history[0].timeChunks);
-    let date = user.history[0].date;
-    return await User.findOneAndUpdate(
-      { email: user.email, "history.date": date }, 
-      { $set: { "history.timeChunks": user.history[0].timeChunks }}, 
-      options);
+    await User.findOneAndUpdate(
+      { email: data.email}, 
+      { $push: { history: data.history }}, 
+      options
+    );
   } catch (e) {
     console.log(e);
   }
