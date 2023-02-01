@@ -39,7 +39,7 @@ const updateUser = async (data) => {
   try {
     await User.findOneAndUpdate(
       { email: data.email}, 
-      { $push: { history: data.history }}, 
+      { $set: { history: data.history }}, 
       options
     );
   } catch (e) {
