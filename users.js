@@ -40,7 +40,7 @@ const updateUser = async (user) => {
     console.log(user.email);
     return await User.findOneAndUpdate(
       { email: user.email }, 
-      { $push: { history: user.history }}, 
+      { $addToSet: { history: user.history }}, 
       options);
   } catch (e) {
     console.log(e);
