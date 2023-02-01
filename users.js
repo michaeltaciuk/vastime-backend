@@ -37,19 +37,10 @@ const createUser = async ({ name, userEmail}) => {
 
 const updateUser = async (data) => {
   try {
-    result = await User.findOneAndUpdate(
-      {
-        "email": data.email,
-        "history": {
-          "$elemMatch": {
-            "date": data.history.date
-          }
-        }
-      },
-      { "$push": { 
-        "history.$[filt].timeChunks": data.history.timeChunks
-      }}, 
-      {"arrayFilters": [{"filt.date": data.history.date}]},
+    
+    await User.findOneAndUpdate(
+      { email: data.email}, 
+      { $push: { history: data.history }}, 
       options
     );
     console.log(data);
