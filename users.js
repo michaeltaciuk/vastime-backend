@@ -39,8 +39,8 @@ const updateUser = async (data) => {
   try {
     await User.findOneAndUpdate(
       { email: data.email}, 
-      { $push: { history: data.history }}, 
-      options
+      { $push: { "history.$[timeChunks.date]": data.history }}, 
+      { arrayFilters: [ { "timeChunks.date": data.history[0].date } ], upsert: true, new: true},
     );
   } catch (e) {
     console.log(e);
