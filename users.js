@@ -37,7 +37,9 @@ const createUser = async ({ name, userEmail}) => {
 
 const updateUser = async (data) => {
   try {
-    await User.findOneAndDelete($and[{email: data.email}, { history: {date: data.history[0].date}}])
+    console.log(data.history[0].date)
+    foo = await User.findOne({email: data.email}, { history: {date: data.history[0].date}})
+    console.log(foo)
     await User.findOneAndUpdate(
       { email: data.email}, 
       { $push: { history: data.history }}, 
